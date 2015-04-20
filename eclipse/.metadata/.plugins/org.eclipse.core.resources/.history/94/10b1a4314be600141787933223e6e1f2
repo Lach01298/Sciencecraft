@@ -1,0 +1,75 @@
+package com.lach.sciencecraft.inventory.slot;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.stats.AchievementList;
+import net.minecraft.util.MathHelper;
+
+public class SlotScienceTable extends Slot
+{
+    /** The player that is using the GUI where this slot resides. */
+    private EntityPlayer thePlayer;
+    private int k;
+    
+    
+    /** The crafting grid inventory linked to this result slot. */
+    private IInventory grid= null;
+    /** The number of items that have been crafted so far. Gets passed to ItemStack.onCrafting before being reset. */
+    private int amountCrafted;
+  
+
+    public SlotScienceTable(EntityPlayer player, IInventory inv, int slotId, int x, int y)
+    {
+        super(inv,slotId,x,y);
+        this.thePlayer = player;
+        this.grid = inv;
+    }
+
+    /**
+     * Check if the stack is a valid item for this slot. Always true beside for the armor slots.
+     */
+    public boolean isItemValid(ItemStack item)
+    {
+        return false;
+    }
+
+    /**
+     * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new
+     * stack.
+     */
+    public ItemStack decrStackSize(int amount)
+    {
+        if (this.getHasStack())
+        {
+            this.k += Math.min(amount, this.getStack().stackSize);
+        }
+
+        return super.decrStackSize(amount);
+    }
+
+    public void onPickupFromSlot(EntityPlayer player, ItemStack item)
+    {
+        this.onCrafting(item);
+        super.onPickupFromSlot(player, item);
+    }
+
+    /**
+     * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood. Typically increases an
+     * internal count then calls onCrafting(item).
+     */
+ 
+
+    /**
+     * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood.
+     */
+    protected void onCrafting(ItemStack item)
+    {
+         
+    }
+}

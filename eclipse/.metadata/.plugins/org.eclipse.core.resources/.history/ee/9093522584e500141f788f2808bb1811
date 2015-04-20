@@ -1,0 +1,51 @@
+package com.lach.sciencecraft.recipes;
+
+import net.minecraft.item.ItemStack;
+
+public class ScienceTableRecipes {
+
+	
+	private ItemStack[][] recipes= new ItemStack[16][];
+	private int recipeIdex =0;
+	
+	
+	
+	public boolean isSciencetableRecipe()
+	{
+		return false;
+	}
+	
+	
+	
+	public void addScienceTableRecipe(ItemStack s1,ItemStack s2,ItemStack s3,ItemStack s4,
+										ItemStack s5,ItemStack s6,ItemStack s7,ItemStack s8,
+										ItemStack s9,ItemStack s10,ItemStack s11,ItemStack s12,
+										ItemStack s13,ItemStack s14,ItemStack s15,ItemStack s16,
+										ItemStack out, int recipeIndex)
+	{
+		recipes[recipeIndex][0] =s1;
+		recipes[recipeIndex][1] =s2;
+		recipes[recipeIndex][2] =s3;
+		recipes[recipeIndex][3] =s4;
+		recipes[recipeIndex][4] =s5;
+		recipes[recipeIndex][5] =s6;
+		recipes[recipeIndex][6] =s7;
+		recipes[recipeIndex][7] =s8;
+		recipes[recipeIndex][8] =s9;
+		recipes[recipeIndex][9] =s10;
+		recipes[recipeIndex][10] =s11;
+		recipes[recipeIndex][11] =s12;
+		recipes[recipeIndex][12] =s13;
+		recipes[recipeIndex][13] =s14;
+		recipes[recipeIndex][14] =s15;
+		recipes[recipeIndex][15] =s16;
+		recipes[recipeIndex][16] =out;
+		
+		recipeIdex++;
+	
+	}
+	
+	
+	
+	
+}

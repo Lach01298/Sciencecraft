@@ -1,0 +1,37 @@
+ #Sciencecraft Language File = BRITISH ENGLISH
+
+#ITEMS
+
+item.copper.name=Copper Ingot
+item.tin.name=Tin Ingot
+item.lead.name=Lead Ingot
+item.zinc.name=Zinc Ingot
+item.tiatanium.name=Tiatanium Ingot
+item.aluminium.name=Aluminium Ingot
+item.silver.name=Silver Ingot
+item.phousphourusRed.name=Red Phousphorus
+item.phousphourusBlack.name=Black Phousphorus
+item.phousphourusWhite.name=White Phousphorus
+item.graphite.name=Graphite
+item.copperPlate.name=Copper Plate
+item.tinPlate.name=Tin Plate
+item.leadPlate.name=Lead Plate
+item.ironPlate.name=Iron Plate
+item.steelPlate.name=Steel Plate
+item.match.name=Match
+item.notes.name=Notes
+
+#BLOCKS
+tile.copperOre.name=Copper Ore
+tile.tinOre.name=Tin Ore
+tile.leadOre.name=Lead Ore
+tile.zincOre.name=Zinc Ore
+tile.silverOre.name=Silver Ore
+tile.phousphorusOre.name=Phousphorus Ore
+tile.tiataniumOre.name=Tiatanium Ore
+tile.aluminiumOre.name=Aluminium Ore
+tile.uraniumOre.name=Uranium Ore
+tile.graphiteOre.name=Graphite Ore
+tile.blastFurnaceBrick.name=Blast Furnace Brick
+tile.scienceTable.name=Science Table
+tile.Bunsen.name=Bunsen Burner

@@ -17,7 +17,7 @@ public class ItemMatch extends Item {
 		super();
 		setMaxStackSize(64);
 		setCreativeTab(Sciencecraft.Sciencecraft);
-		setUnlocalizedName("Match");
+		setUnlocalizedName("match");
 	}
 
 	public void registerIcons(IIconRegister iconRegister) {

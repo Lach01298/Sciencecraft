@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="net.minecraft.item.ItemStack"/>
+<fullyQualifiedTypeName name="net.minecraft.item.Item"/>
+<fullyQualifiedTypeName name="net.minecraft.item.crafting.ShapedRecipes"/>
+<fullyQualifiedTypeName name="net.minecraft.item.crafting.IRecipe"/>
+<fullyQualifiedTypeName name="net.minecraft.item.crafting.ShapelessRecipes"/>
+<fullyQualifiedTypeName name="net.minecraft.inventory.Slot"/>
+<fullyQualifiedTypeName name="com.lach.sciencecraft.inventory.slot.SlotScienceTable"/>
+<fullyQualifiedTypeName name="com.lach.sciencecraft.recipes.STRecipeHandler"/>
+<fullyQualifiedTypeName name="net.minecraft.inventory.IInventory"/>
+<fullyQualifiedTypeName name="net.minecraft.block.Block"/>
+</qualifiedTypeNameHistroy>

@@ -12,21 +12,18 @@ import cpw.mods.fml.common.network.IGuiHandler;
 public class SciencecraftGUIHandler implements IGuiHandler {
 
 	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world,
-			int x, int y, int z) {
+	public Object getServerGuiElement(int ID, EntityPlayer player, World world,int x, int y, int z) {
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 
 		switch (ID) {
 		case Sciencecraft.ScienceTable_ID:
 			if (tileEntity instanceof TileEntityScienceTable) {
-				return new ContainerScienceTable(player.inventory,
-						(TileEntityScienceTable) tileEntity);
+				return new ContainerScienceTable(player.inventory,(TileEntityScienceTable) tileEntity);
 			}
 
 		case Sciencecraft.Bunsen_ID:
 			if (tileEntity instanceof TileEntityBunsen) {
-				return new ContainerBunsen(player.inventory,
-						(TileEntityBunsen) tileEntity);
+				return new ContainerBunsen(player.inventory,(TileEntityBunsen) tileEntity);
 			}
 
 		}
@@ -41,14 +38,12 @@ public class SciencecraftGUIHandler implements IGuiHandler {
 		switch (ID) {
 		case Sciencecraft.ScienceTable_ID:
 			if (tileEntity instanceof TileEntityScienceTable) {
-				return new GUIScienceTable(player.inventory,
-						(TileEntityScienceTable) tileEntity);
+				return new GUIScienceTable(player.inventory,(TileEntityScienceTable) tileEntity);
 			}
 
 		case Sciencecraft.Bunsen_ID:
 			if (tileEntity instanceof TileEntityBunsen) {
-				return new BunsenGUI(player.inventory,
-						(TileEntityBunsen) tileEntity);
+				return new BunsenGUI(player.inventory,(TileEntityBunsen) tileEntity);
 			}
 
 		}

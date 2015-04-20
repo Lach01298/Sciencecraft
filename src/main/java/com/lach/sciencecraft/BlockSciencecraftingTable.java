@@ -69,49 +69,39 @@ public class BlockSciencecraftingTable extends BlockContainer {
 		return Item.getItemFromBlock(this);
 	}
 
-	public void breakBlock(World world, int x, int y, int z, Block block,
-			int metadata) {
+	public void breakBlock(World world, int x, int y, int z, Block block, int metadata) {
 
-		TileEntityScienceTable ScienceTable = (TileEntityScienceTable) world
-				.getTileEntity(x, y, z);
+		
+		
+		TileEntityScienceTable ScienceTable = (TileEntityScienceTable) world.getTileEntity(x, y, z);
 
 		if (ScienceTable != null) {
-			for (int i1 = 0; i1 < ScienceTable.getSizeInventory(); ++i1) {
-				ItemStack itemstack = ScienceTable.getStackInSlot(i1);
-
+			
+			for (int i = 0; i < ScienceTable.getSizeInventory(); ++i) {
+				ItemStack itemstack = ScienceTable.getStackInSlot(i);
+				
+				System.out.println("drop " + itemstack);
+				
 				if (itemstack != null) {
-					float f = this.random.nextFloat() * 0.8F + 0.1F;
-					float f1 = this.random.nextFloat() * 0.8F + 0.1F;
-					float f2 = this.random.nextFloat() * 0.8F + 0.1F;
+					
+					float xMotion = this.random.nextFloat() * 0.8F + 0.1F;
+					float yMotion = this.random.nextFloat() * 0.8F + 0.1F;
+					float zMotion = this.random.nextFloat() * 0.8F + 0.1F;
 
 					while (itemstack.stackSize > 0) {
-						int j1 = this.random.nextInt(21) + 10;
-
-						if (j1 > itemstack.stackSize) {
-							j1 = itemstack.stackSize;
-						}
-
-						itemstack.stackSize -= j1;
-						EntityItem entityitem = new EntityItem(world,
-								(double) ((float) x + f),
-								(double) ((float) y + f1),
-								(double) ((float) z + f2), new ItemStack(
-										itemstack.getItem(), j1,
-										itemstack.getItemDamage()));
+						
+						
+						
+						EntityItem entityitem = new EntityItem(world,(double)((float)x + xMotion),(double)((float)y + yMotion),(double)((float)z + zMotion), new ItemStack(itemstack.getItem(), itemstack.stackSize,itemstack.getItemDamage()));
 
 						if (itemstack.hasTagCompound()) {
-							entityitem.getEntityItem().setTagCompound(
-									(NBTTagCompound) itemstack.getTagCompound()
-											.copy());
+							entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
 						}
 
 						float f3 = 0.05F;
-						entityitem.motionX = (double) ((float) this.random
-								.nextGaussian() * f3);
-						entityitem.motionY = (double) ((float) this.random
-								.nextGaussian() * f3 + 0.2F);
-						entityitem.motionZ = (double) ((float) this.random
-								.nextGaussian() * f3);
+						entityitem.motionX = (double) ((float) this.random.nextGaussian() * f3);
+						entityitem.motionY = (double) ((float) this.random.nextGaussian() * f3 + 0.2F);
+						entityitem.motionZ = (double) ((float) this.random.nextGaussian() * f3);
 						world.spawnEntityInWorld(entityitem);
 					}
 				}

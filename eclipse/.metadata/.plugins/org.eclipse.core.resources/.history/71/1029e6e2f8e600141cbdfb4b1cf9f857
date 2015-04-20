@@ -1,0 +1,160 @@
+package com.lach.sciencecraft.recipes;
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraft.world.World;
+
+	public class STRecipeHandler
+	{
+	    /** The static instance of this class */
+	    private static final STRecipeHandler instance = new STRecipeHandler();
+	    /** A list of all the recipes added */
+	    private  List recipes = new ArrayList();
+	   
+
+	    /**
+	     * Returns the static instance of this class
+	     */
+	    public static final STRecipeHandler getInstance()
+	    {
+	        
+	        return instance;
+	    }
+
+	    private STRecipeHandler()
+	    {
+	    	this.addRecipe(new ItemStack(Blocks.dirt,2), new Object[] {"SSSS", "SSSS", "SSSS", "SSSS", 'S', Items.stick});
+	        this.addRecipe(new ItemStack(Blocks.iron_block,2), new Object[] {"IIII", "IIII", "IIII", "IIII", 'I', Items.iron_ingot});
+	        
+	    }
+
+	    public RecipesST addRecipe(ItemStack output, Object ... recipe)
+	    {
+	        String recipeString = "";
+	        int currentIndex = 0;
+	        int gridwidth = 0;
+	        int gridHieght = 0;
+
+	        if (recipe[currentIndex] instanceof String[])
+	        {
+	            String[] astring = (String[])((String[])recipe[currentIndex++]);
+
+	            for (int i = 0; i < astring.length; ++i)
+	            {
+	                String tempStorage = astring[i];
+	                ++gridHieght;
+	                gridwidth = tempStorage.length();
+	                recipeString = recipeString + tempStorage;
+	            }
+	        }
+	        else
+	        {
+	            while (recipe[currentIndex] instanceof String)
+	            {
+	                String tempStorage = (String)recipe[currentIndex++];
+	                ++gridHieght;
+	                gridwidth = tempStorage.length();
+	                recipeString = recipeString + tempStorage;
+	            }
+	        }
+
+	        HashMap hashmap;
+
+	        for (hashmap = new HashMap(); currentIndex < recipe.length; currentIndex += 2)
+	        {
+	            Character character = (Character)recipe[currentIndex];
+	            ItemStack item = null;
+
+	            if (recipe[currentIndex + 1] instanceof Item)
+	            {
+	                item = new ItemStack((Item)recipe[currentIndex + 1]);
+	            }
+	            else if (recipe[currentIndex + 1] instanceof Block)
+	            {
+	                item = new ItemStack((Block)recipe[currentIndex + 1], 1, 2^15-1);
+	            }
+	            else if (recipe[currentIndex + 1] instanceof ItemStack)
+	            {
+	                item = (ItemStack)recipe[currentIndex + 1];
+	            }
+
+	            hashmap.put(character, item);
+	        }
+
+	        ItemStack[] aitemstack = new ItemStack[gridwidth * gridHieght];
+
+	        for (int i1 = 0; i1 < gridwidth * gridHieght; ++i1)
+	        {
+	            char c = recipeString.charAt(i1);
+
+	            if (hashmap.containsKey(Character.valueOf(c)))
+	            {
+	                aitemstack[i1] = ((ItemStack)hashmap.get(Character.valueOf(c))).copy();
+	            }
+	            else
+	            {
+	                aitemstack[i1] = null;
+	            }
+	        }
+
+	        RecipesST recipes = new RecipesST(gridwidth, gridHieght, aitemstack, output);
+	        this.recipes.add(recipes);
+	        return recipes;
+	    }
+
+	   
+
+	    public ItemStack findMatchingRecipe(IInventory inputs, World world)
+	    {
+	            
+	            for (int j = 0; j < recipes.size(); ++j)
+	            {
+	                IRecipe irecipe = (IRecipe)recipes.get(j);
+
+	                if (irecipe.matches((InventoryCrafting) inputs, world))
+	                {
+	                    return irecipe.getCraftingResult((InventoryCrafting) inputs);
+	                }
+	            }
+
+	            return null;
+	        }
+	   
+
+	    /**
+	     * returns the List<> of all recipes
+	     */
+	    public List getRecipeList()
+	    {
+	        return this.recipes;
+	    }
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+

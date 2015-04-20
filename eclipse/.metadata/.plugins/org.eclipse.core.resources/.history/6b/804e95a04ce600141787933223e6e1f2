@@ -1,0 +1,107 @@
+package com.lach.sciencecraft.inventory.slot;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.stats.AchievementList;
+import net.minecraft.util.MathHelper;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
+
+public class SlotScienceTable extends Slot
+{
+    /** The player that is using the GUI where this slot resides. */
+    private EntityPlayer thePlayer;
+    private int k;
+    
+    
+    /** The crafting grid inventory linked to this result slot. */
+    private IInventory grid= null;
+    /** The number of items that have been crafted so far. Gets passed to ItemStack.onCrafting before being reset. */
+    private int amountCrafted;
+  
+
+    public SlotScienceTable(EntityPlayer player, IInventory grid, IInventory output ,int slotId, int x, int y)
+    {
+        super(grid,slotId,x,y);
+        this.thePlayer = player;
+        this.grid = grid;
+    }
+
+    /**
+     * Check if the stack is a valid item for this slot. Always true beside for the armor slots.
+     */
+    public boolean isItemValid(ItemStack item)
+    {
+        return false;
+    }
+
+    /**
+     * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new
+     * stack.
+     */
+    public ItemStack decrStackSize(int amount)
+    {
+        if (this.getHasStack())
+        {
+            this.k += Math.min(amount, this.getStack().stackSize);
+        }
+
+        return super.decrStackSize(amount);
+    }
+
+    public void onPickupFromSlot(EntityPlayer player, ItemStack item)
+    {
+    	 FMLCommonHandler.instance().firePlayerCraftingEvent(player, item, grid);
+         this.onCrafting(item);
+
+         for (int i = 0; i < this.grid.getSizeInventory(); ++i)
+         {
+             ItemStack itemstack = this.grid.getStackInSlot(i);
+
+             if (itemstack != null)
+             {
+                 this.grid.decrStackSize(i, 1);
+
+                 if (itemstack.getItem().hasContainerItem(itemstack))
+                 {
+                     ItemStack itemstack2 = itemstack.getItem().getContainerItem(itemstack);
+
+                     if (itemstack2 != null && itemstack2.isItemStackDamageable() && itemstack2.getItemDamage() > itemstack2.getMaxDamage())
+                     {
+                         MinecraftForge.EVENT_BUS.post(new PlayerDestroyItemEvent(thePlayer, itemstack2));
+                         continue;
+                     }
+
+                     if (!itemstack.getItem().doesContainerItemLeaveCraftingGrid(itemstack) || !this.thePlayer.inventory.addItemStackToInventory(itemstack2))
+                     {
+                         if (this.grid.getStackInSlot(i) == null)
+                         {
+                             this.grid.setInventorySlotContents(i, itemstack2);
+                         }
+                         else
+                         {
+                             this.thePlayer.dropPlayerItemWithRandomChoice(itemstack2, false);
+                         }
+                     }
+                 }
+             }
+         }
+   
+    
+    }
+
+    
+    /**
+     * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood.
+     */
+    protected void onCrafting(ItemStack item)
+    {
+         
+    }
+}

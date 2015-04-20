@@ -3,6 +3,8 @@ package com.lach.sciencecraft;
 import com.lach.sciencecraft.complexBlock.SciencecraftGUIHandler;
 import com.lach.sciencecraft.entitys.RegisteryEntitys;
 import com.lach.sciencecraft.proxy.CommonProxy;
+import com.lach.sciencecraft.recipes.CraftingRecipes;
+import com.lach.sciencecraft.recipes.SmeltingRecipes;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -77,7 +79,7 @@ public class Sciencecraft {
 	public final static Item ItemPhosphrousRed = new ItemPhosphrous().setUnlocalizedName("phousphourusRed").setTextureName("sciencecraft:red phosphorus");
 	public final static Item ItemPhosphrousBlack = new ItemPhosphrous().setUnlocalizedName("phousphourusBlack").setTextureName("sciencecraft:black phosphorus");
 	public final static Item ItemPhosphrousWhite = new ItemPhosphrous().setUnlocalizedName("phousphourusWhite").setTextureName("sciencecraft:white phosphorus");
-	public final static Item ItemGraphite = new ItemGraphite().setTextureName("sciencecraft:graphite").setUnlocalizedName("graphite");
+	public final static Item ItemGraphite = new ItemGraphite().setTextureName("graphite").setUnlocalizedName("graphite");
 
 	public final static Item CopperPlate = new ItemPlate().setTextureName("sciencecraft:Copper plate").setUnlocalizedName("copperPlate");
 	public final static Item TinPlate = new ItemPlate().setTextureName("sciencecraft:Tin plate").setUnlocalizedName("tinPlate");
@@ -94,27 +96,18 @@ public class Sciencecraft {
 	// ItemResearch().setTextureName("sciencecraft:notes");
 
 	// ores basic ores
-	public final static Block CopperOre = new BasicOre().setBlockTextureName(
-			"sciencecraft:CopperOre").setBlockName("copperOre");
-	public final static Block TinOre = new BasicOre().setBlockTextureName(
-			"sciencecraft:TinOre").setBlockName("tinOre");
-	public final static Block LeadOre = new BasicOre().setBlockTextureName(
-			"sciencecraft:lead ore").setBlockName("leadOre");
-	public final static Block ZincOre = new BasicOre().setBlockTextureName(
-			"sciencecraft:Zinc ore").setBlockName("zincOre");
-	public final static Block SilverOre = new BasicOre().setBlockTextureName(
-			"sciencecraft:silver ore").setBlockName("silverOre");
-	public final static Block PhousphorusOre = new BlockPhosphorusOre()
-			.setBlockTextureName("sciencecraft:phousporus ore").setBlockName(
-					"phousphorusOre");
-	public final static Block GraphiteOre = new BlockGraphiteOre()
-			.setBlockTextureName("sciencecraft:graphite ore").setBlockName(
-					"graphiteOre");
+	public final static Block CopperOre = new BasicOre().setBlockTextureName("sciencecraft:CopperOre").setBlockName("copperOre");
+	public final static Block TinOre = new BasicOre().setBlockTextureName("sciencecraft:TinOre").setBlockName("tinOre");
+	public final static Block LeadOre = new BasicOre().setBlockTextureName("sciencecraft:lead ore").setBlockName("leadOre");
+	public final static Block ZincOre = new BasicOre().setBlockTextureName("sciencecraft:Zinc ore").setBlockName("zincOre");
+	public final static Block SilverOre = new BasicOre().setBlockTextureName("sciencecraft:silver ore").setBlockName("silverOre");
+	public final static Block PhousphorusOre = new BlockPhosphorusOre().setBlockTextureName("sciencecraft:phousporus ore").setBlockName("phousphorusOre");
+	public final static Block GraphiteOre = new BlockGraphiteOre().setBlockTextureName("sciencecraft:graphite ore").setBlockName("graphiteOre");
 
 	// hard ores
 	public final static Block TiataniumOre = new HardOre().setBlockTextureName("sciencecraft:titanium ore").setBlockName("tiataniumOre");
 	public final static Block AluminiumOre = new HardOre().setBlockTextureName("sciencecraft:aluminium ore").setBlockName("aluminiumOre");
-	public final static Block UraniumOre = new HardOre().setBlockTextureName("sciencecraft:uranium ore").setBlockName("UraniumOre");
+	public final static Block UraniumOre = new HardOre().setBlockTextureName("sciencecraft:uranium ore").setBlockName("uraniumOre");
 
 	// blocks
 

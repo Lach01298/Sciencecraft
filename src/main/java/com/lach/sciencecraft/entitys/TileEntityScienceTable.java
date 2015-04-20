@@ -1,8 +1,12 @@
 package com.lach.sciencecraft.entitys;
 
+import com.lach.sciencecraft.inventory.InventoryCrafter;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,7 +17,9 @@ import net.minecraft.tileentity.TileEntityFurnace;
 public class TileEntityScienceTable extends TileEntity implements
 		ISidedInventory {
 
-	private ItemStack[] slots = new ItemStack[17];
+	private ItemStack[] slots = new ItemStack[16];
+
+	;
 
 	private static final int[] Top = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
 			10, 11, 12, 13, 14, 15 };

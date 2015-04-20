@@ -12,6 +12,6 @@ public class ItemGraphite extends Item {
 	}
 
 	public void registerIcons(IIconRegister iconRegister) {
-		this.itemIcon = iconRegister.registerIcon("Sciencecraft:graphite");
+		this.itemIcon = iconRegister.registerIcon("graphite");
 	}
 }

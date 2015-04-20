@@ -1,0 +1,38 @@
+package com.lach.sciencecraft.recipes;
+
+import net.minecraft.item.ItemStack;
+
+public class ScienceTableRecipes {
+
+	
+	private ItemStack[][] recipes;
+	
+	
+	
+	public boolean isSciencetableRecipe()
+	{
+		return false;
+	}
+	
+	
+	
+	public void addScienceTableRecipe(ItemStack s1,ItemStack s2,ItemStack s3,ItemStack s4,
+										ItemStack s5,ItemStack s6,ItemStack s7,ItemStack s8,
+										ItemStack s9,ItemStack s10,ItemStack s11,ItemStack s12,
+										ItemStack s13,ItemStack s14,ItemStack s15,ItemStack s16,
+										ItemStack out)
+	
+	
+	
+	
+	
+	
+	
+	{
+		
+	}
+	
+	
+	
+	
+}

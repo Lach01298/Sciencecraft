@@ -1,0 +1,5 @@
+package com.lach.sciencecraft.inventory.slot;
+
+public class SlotScienceTable {
+
+}
